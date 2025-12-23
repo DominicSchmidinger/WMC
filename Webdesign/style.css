@@ -32,6 +32,7 @@ body {
     background-color: #000000;
     margin: 0;
     padding: 0;
+    font-size: 1em;
     font-family: Arial, sans-serif;
 }
 
@@ -39,6 +40,13 @@ body a {
     color: white;
     text-decoration: underline;
 }
+
+h2 {
+    font-size: 60px;
+    margin: 0cm;
+    margin-bottom: 60px;
+}
+
 
 /* Container Grid */
 .container {
@@ -59,8 +67,27 @@ body a {
         display: grid;
         grid-template-columns: 1fr;
         gap: 20px;
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 24px;
     }
 }
+
+@media (max-width: 480px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
 
 
 
@@ -93,7 +120,15 @@ body a {
     color: white;
     text-align: center;
     padding: 1em;
+
+    #kamel {
+        font-size: 24px;
+        margin-top: 0px;
+    }
 }
+
+
+
 
 .MeinVerein a:hover {
     color: #000;
