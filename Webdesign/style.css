@@ -1,5 +1,6 @@
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 70px;
 }
 
 /* Navigation */
@@ -42,7 +43,7 @@ body a {
 /* Container Grid */
 .container {
     display: grid;
-    grid-template-areas: 
+    grid-template-areas:
         "header header"
         "Stats MeinVerein"
         "content_hobbies content_hobbies"
@@ -51,6 +52,17 @@ body a {
     grid-template-columns: 2fr 2fr;
     gap: 10px;
 }
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+
 
 /* Header */
 .header {
@@ -123,7 +135,8 @@ body a {
 /* Grid für Bilder 3+2 */
 .content_traumhund .bilder-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* erste Reihe 3 Spalten */
+    grid-template-columns: repeat(3, 1fr);
+    /* erste Reihe 3 Spalten */
     gap: 10px;
     justify-items: center;
     margin-bottom: 10px;
@@ -159,5 +172,5 @@ body a {
 /* Danke */
 .danke {
     font-size: 0.8em;
-    opacity: 0.7; 
+    opacity: 0.7;
 }
