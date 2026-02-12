@@ -48,5 +48,29 @@ else if (age >= 65) {
     alert("You're a senior")
 }
 
-//weiter machen bis ende
+//exercise 5
 
+let num = prompt("number?");
+
+let nume = Number(num)
+
+alert(nume % 2 === 0? "Even" : "Odd")
+    
+//exercise 6
+
+let loginButton = document.getElementById("loginButton");
+
+loginButton.addEventListener("click", function() {
+
+let usernameInput = document.getElementById("username");
+let passwordInput = document.getElementById("password");
+
+let username = usernameInput.value;
+let password = passwordInput.value;
+
+if (username !== "admin" && password.length < 8 && username.length < 5) { 
+    alert("Invalid username and password22");
+}else {
+        alert("Login successful");
+    }
+});
