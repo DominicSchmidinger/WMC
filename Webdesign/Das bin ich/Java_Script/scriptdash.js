@@ -337,6 +337,6 @@ try {
 // 4. Scope-Fehler: Der Versuch, auf 'secret' von außen zuzugreifen, führt zu einem 
 //    ReferenceError, weil der Browser die Variable außerhalb der Klammern nicht kennt.
 
-
+//das ist nur um git zu zeigen
 
 });
