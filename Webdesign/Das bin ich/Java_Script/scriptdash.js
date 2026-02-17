@@ -346,6 +346,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // 4. Scope-Fehler: Der Versuch, auf 'secret' von außen zuzugreifen, führt zu einem 
     //    ReferenceError, weil der Browser die Variable außerhalb der Klammern nicht kennt.
 
-//ich schreib noch was dazu
+
 
 });
