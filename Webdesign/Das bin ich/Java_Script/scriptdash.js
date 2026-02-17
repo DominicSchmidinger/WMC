@@ -76,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("You're a senior")
         }
     }
+    runAgecheck();
 
     //exercise 5
 
