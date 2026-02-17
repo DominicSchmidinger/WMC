@@ -1,25 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <h1 id="welcomeText"></h1>
 
-    <input type="number" id="num1" placeholder="Zahl 1">
-    <input type="number" id="num2" placeholder="Zahl 2">
-    <input type="text" id="usernameInput" placeholder="Name">
-    <button id="calculateButton" type="button">Berechne</button>
-    <br>
-    <br\>
+    <div class="exercise-box">
+        <h3>Rechner & Greet</h3>
+        <input type="number" id="num1" placeholder="Zahl 1">
+        <input type="number" id="num2" placeholder="Zahl 2">
+        <input type="text" id="usernameInput" placeholder="Name">
+        <button id="calculateButton" type="button">Berechne</button>
+    </div>
 
+    <div class="exercise-box">
+        <h3>Temperatur</h3>
         <input type="number" id="temp" placeholder="Celsius">
-        <button id="temperatur" type="button">Temperatur berechnen in Ferenheit</button>
+        <button id="temperatur" type="button">In Fahrenheit umrechnen</button>
+    </div>
 
+    <div class="exercise-box">
+        <h3>Taschenrechner</h3>
         <input type="number" id="num3" placeholder="Zahl 1">
         <select id="operator">
             <option value="add">+</option>
@@ -29,27 +30,15 @@
         </select>
         <input type="number" id="num4" placeholder="Zahl 2">
         <button id="calcButton" type="button">Berechne</button>
+    </div>
 
-        <input type="text" id="nameInput" placeholder="value">
-        <button id="typeof" type="button">Was ist mein datentyp?</button>
+    <div class="exercise-box">
+        <h3>Datentyp Check</h3>
+        <input type="text" id="nameInput" placeholder="Wert eingeben">
+        <button id="typeof" type="button">Was ist mein Datentyp?</button>
+    </div>
 
+    <button id="logoutButton">Logout</button>
 
-
-
-
-
-
-
-
-
-
-
-
-        <button id="logoutButton">Logout</button>
-
-
-        <script src="scriptdash.js">
-        </script>
+    <script src="scriptdash.js"></script>
 </body>
-
-</html>

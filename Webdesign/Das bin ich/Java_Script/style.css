@@ -1,0 +1,92 @@
+/* Grundlegendes Design */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0a192f;
+    /* Deep Dark Blue */
+    color: #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    margin: 0;
+}
+
+/* Container für Login & Dashboard Übungen */
+h1,
+h2 {
+    color: #64ffda;
+    /* Aqua Akzent */
+    text-align: center;
+}
+
+/* Gemeinsames Styling für Formular-Bereiche */
+.container,
+.exercise-box {
+    background-color: #112240;
+    /* Etwas helleres Blau */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 2rem;
+    border: 1px solid #233554;
+}
+
+/* Input Felder */
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #233554;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #0a192f;
+    color: #e6f1ff;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+    border-color: #64ffda;
+    box-shadow: 0 0 5px rgba(100, 255, 218, 0.3);
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    background-color: transparent;
+    color: #64ffda;
+    border: 1px solid #64ffda;
+    padding: 12px 20px;
+    margin: 15px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Logout Button Rot-Akzent */
+#logoutButton {
+    color: #ff4d4d;
+    border-color: #ff4d4d;
+    margin-top: 40px;
+}
+
+#logoutButton:hover {
+    background-color: rgba(255, 77, 77, 0.1);
+}
+
+/* Hilfsklasse für Abstände */
+br {
+    display: none;
+    /* Wir nutzen lieber Margins im CSS */
+}
