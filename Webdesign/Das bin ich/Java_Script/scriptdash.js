@@ -4,27 +4,27 @@ document.addEventListener("DOMContentLoaded", () => {
     let username1 = localStorage.getItem("username");
 
     if (!username1) {
-        window.location.href = "login.html";
+        // window.location.href = "login.html"; // Deaktiviert, falls du lokal testest
     } else {
         let welcomeText = document.getElementById("welcomeText");
-        welcomeText.textContent = "Hello " + username1;
+        if (welcomeText) welcomeText.textContent = "Hello " + username1;
     }
 
     let logoutButton = document.getElementById("logoutButton");
-
-    logoutButton.addEventListener("click", function () {
-        localStorage.removeItem("username");
-
-        window.location.href = "login.html";
-    })
+    if (logoutButton) {
+        logoutButton.addEventListener("click", function () {
+            localStorage.removeItem("username");
+            window.location.href = "login.html";
+        })
+    }
 
 
     //exercise 1:
 
 
     let userName = 'Alice';
-    let userAge = '25';
-    let isStudent = 'true';
+    let userAge = 25;
+    let isStudent = true;
 
     console.log("Name: " + userName, "Age: " + 25, "Student status: " + isStudent);
 
@@ -53,23 +53,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const runAgecheck = () => {
         let age = prompt("age?");
+        if (age === null) return;
 
         let agenum = Number(age)
 
         console.log(agenum)
-        if (age == null || age == 0) {
+        if (age == "" || age == 0) {
             alert("No age provided")
         }
-        else if (age < 13) {
+        else if (agenum < 13) {
             alert("You're a child")
         }
-        else if (age < 17) {
+        else if (agenum < 17) {
             alert("You're a teenager")
         }
-        else if (age < 64) {
+        else if (agenum < 64) {
             alert("You're an adult")
         }
-        else if (age >= 65) {
+        else if (agenum >= 65) {
             alert("You're a senior")
         }
     }
@@ -78,22 +79,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let num = prompt("number?");
 
-    let nume = Number(num)
-
-    if (nume === 0 || nume === null) {
-        alert("keine nummer eingegeben");
+    if (num !== null && num !== "") {
+        let nume = Number(num)
+        if (nume === 0) {
+            alert("keine nummer eingegeben");
+        }
+        else
+            alert(nume % 2 === 0 ? "Even" : "Odd");
     }
-    else
-        alert(nume % 2 === 0 ? "Even" : "Odd");
 
     // exercise 7
     let username = prompt("whats your name?")
     let usertheme = prompt("choose a theme?")
     let userlanguage = prompt("ehat do you speak?")
 
-    userNamefinal = username ?? "Guest"
-    userThemefinal = usertheme ?? "light"
-    userLanguagefinal = userlanguage ?? "en"
+    let userNamefinal = username || "Guest"
+    let userThemefinal = usertheme || "light"
+    let userLanguagefinal = userlanguage || "en"
 
     console.log(userNamefinal, userThemefinal, userLanguagefinal);
 
@@ -111,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     for (let i = 0; i < 20; i++) {
-        if (i % 2)
+        if (i % 2 !== 0)
             console.log("ungerade zahlen: ", i)
     }
     console.log("ende")
@@ -139,8 +141,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //exercise 11
 
     let username2 = localStorage.getItem("username");
-
-    document.getElementById("welcomeText").textContent = "Hello " + username2;
+    let welcomeElem = document.getElementById("welcomeText");
+    if (welcomeElem) welcomeElem.textContent = "Hello " + username2;
 
     const squareFunc = n => n * n;
     const sumFunc = (a, b) => a + b;
@@ -149,56 +151,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const calculateButton = document.getElementById("calculateButton");
 
+    if (calculateButton) {
+        calculateButton.addEventListener("click", function () {
 
-    calculateButton.addEventListener("click", function () {
+            let n = Number(document.getElementById("num1").value);
+            let a = n;
+            let b = Number(document.getElementById("num2").value);
+            let name = document.getElementById("usernameInput").value;
 
-        let n = Number(document.getElementById("num1").value);
-        let a = n;
-        let b = Number(document.getElementById("num2").value);
-        let name = document.getElementById("usernameInput").value;
-
-        console.log("Quadrat:", squareFunc(n));
-        console.log("Summe:", sumFunc(a, b));
-        alert(greetFunc(name));
-    });
+            console.log("Quadrat:", squareFunc(n));
+            console.log("Summe:", sumFunc(a, b));
+            alert(greetFunc(name));
+        });
+    }
 
 
     const temprechner = document.getElementById("temperatur");
 
-    temprechner.addEventListener("click", function () {
-        let temp = Number(document.getElementById("temp").value);
+    if (temprechner) {
+        temprechner.addEventListener("click", function () {
+            let temp = Number(document.getElementById("temp").value);
 
-        console.log("In Ferenheit: " + (temp * 9 / 5 + 32));
+            console.log("In Ferenheit: " + (temp * 9 / 5 + 32));
 
-    });
+        });
+    }
 
 
     //exercise 12
     const rechenen = document.getElementById("calcButton");
 
-    rechenen.addEventListener("click", function () {
+    if (rechenen) {
+        rechenen.addEventListener("click", function () {
 
 
-        let calc1 = Number(document.getElementById("num3").value)
-        let op = document.getElementById("operator").value
-        let calc2 = Number(document.getElementById("num4").value);
+            let calc1 = Number(document.getElementById("num3").value)
+            let op = document.getElementById("operator").value
+            let calc2 = Number(document.getElementById("num4").value);
 
 
 
-        if (op === "add") {
-            console.log(calc1 + calc2)
-        } else if (op === "subtract") {
-            console.log(calc1 - calc2)
-        } else if (op === "multiply") {
-            console.log(calc1 * calc2)
-        } else if (op === "divide") {
-            if (calc2 !== 0) {
-                console.log(calc1 / calc2);
-            } else {
-                console.log("Division durch 0 nicht möglich!");
+            if (op === "add") {
+                console.log(calc1 + calc2)
+            } else if (op === "subtract") {
+                console.log(calc1 - calc2)
+            } else if (op === "multiply") {
+                console.log(calc1 * calc2)
+            } else if (op === "divide") {
+                if (calc2 !== 0) {
+                    console.log(calc1 / calc2);
+                } else {
+                    console.log("Division durch 0 nicht möglich!");
+                }
             }
-        }
-    });
+        });
+    }
 
 
     //exercise 13
@@ -241,102 +248,104 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //exercise 14
 
-const typeOfButton = document.getElementById("typeof");
+    const typeOfButton = document.getElementById("typeof");
 
-typeOfButton.addEventListener("click", function () {
-    let inputValue = document.getElementById("nameInput").value;
+    if (typeOfButton) {
+        typeOfButton.addEventListener("click", function () {
+            let inputValue = document.getElementById("nameInput").value;
 
-    if (inputValue === "") {
-        console.log("Bitte etwas eingeben!");
-        return;
+            if (inputValue === "") {
+                console.log("Bitte etwas eingeben!");
+                return;
+            }
+            let numerischerWert = Number(inputValue);
+            if (!isNaN(numerischerWert) && inputValue.trim() !== "") {
+                console.log("Zahl erkannt! Quadrat:", numerischerWert * numerischerWert);
+            }
+            else {
+                console.log("Text erkannt! Uppercase:", inputValue.toUpperCase());
+            }
+        });
     }
-    let numerischerWert = Number(inputValue);
-    if (!isNaN(numerischerWert)) {
-        console.log("Zahl erkannt! Quadrat:", numerischerWert * numerischerWert);
-    } 
-    else {
-        console.log("Text erkannt! Uppercase:", inputValue.toUpperCase());
+
+
+    //exercise 15
+
+    let shippingcost = prompt("what would you like to sepend");
+    let shippingcountry = prompt("Where do you want to ship to?");
+
+    if (shippingcost > 100) {
+        alert("You get free shipping!");
+    } else if (shippingcountry && shippingcountry.toLowerCase() === "domestic") {
+        alert(shippingcost + 5);
+    } else if (shippingcountry && shippingcountry.toLowerCase() === "international") {
+        alert(shippingcost + 20);
+    } else if (shippingcountry && (shippingcountry.toLowerCase() === "canada" || shippingcountry.toLowerCase() === "mexico")) {
+        alert(shippingcost + 10);
+    } else {
+        alert("Please enter a valid shipping country (domestic, international, canada, mexico)");
     }
-});
 
 
-//exercise 15
+    //exercise 16
 
-let shippingcost = prompt(Number("How much do you want to spend?"))
-let shippingcountry = prompt("Where do you want to ship to?")
+    let k = 0;
+    let loopcount = 0
 
-if (shipping > 100) {
-    alert("You get free shipping!");
-} else if (shippingcountry.toLowerCase() === "domestic") {
-    alert(shippingcost + 5);
-} else if (shippingcountry.toLowerCase() === "international") {
-    alert(shippingcost + 20);
-}else if (shippingcountry.toLowerCase() === "canada" || shippingcountry.toLowerCase() === "mexico") {
-    alert(shippingcost + 10);
-} else {
-    alert("Please enter a valid shipping country (domestic, international, canada, mexico)");
-}
-
-
-//exercise 16
-
-let k = 0;
-let loopcount = 0
-
-while (k <= 50) {
-    if (k % 3 === 0) {
+    while (k <= 50) {
+        if (k % 3 === 0) {
+            k++;
+            continue;
+        } else if (k % 7 === 0 && k > 30) {
+            break;
+        }
+        console.log(k);
         k++;
-        continue;
-    }else if (k % 7 === 0 && k > 30) {
-        break;
-    } 
-    console.log(k);
-    k++;
-    loopcount++;
-}
-console.log("Anzahl der Schleifendurchläufe: " + loopcount);
+        loopcount++;
+    }
+    console.log("Anzahl der Schleifendurchläufe: " + loopcount);
 
-//exercise 17
+    //exercise 17
 
-// Global Variable
-let status = "Global: Ich bin überall sichtbar";
+    // Global Variable
+    let status = "Global: Ich bin überall sichtbar";
 
-function scopeTest() {
-    // Local Variable
-    let status = "Lokal: Ich bin nur hier drin"; 
-    let secret = "Ich bin ein Geheimnis";
+    function scopeTest() {
+        // Local Variable
+        let status = "Lokal: Ich bin nur hier drin";
+        let secret = "Ich bin ein Geheimnis";
 
-    console.log("Innerhalb der Funktion");
-    console.log(status); 
-    console.log(secret); 
-}
+        console.log("Innerhalb der Funktion");
+        console.log(status);
+        console.log(secret);
+    }
 
-scopeTest();
+    scopeTest();
 
-console.log("Außerhalb der Funktion");
-console.log(status); 
+    console.log("Außerhalb der Funktion");
+    console.log(status);
 
-try {
-    console.log(secret); 
-} catch (e) {
-    console.log("Fehler: Auf 'secret' kann man von außen nicht zugreifen.");
-}
+    try {
+        console.log(secret);
+    } catch (e) {
+        console.log("Fehler: Auf 'secret' kann man von außen nicht zugreifen.");
+    }
 
-// --- ERKLÄRUNGEN ZU DEN CONCEPTS ---
+    // --- ERKLÄRUNGEN ZU DEN CONCEPTS ---
 
-// 1. Global Variable: Wurde ganz oben außerhalb der Funktion deklariert. 
-//    Sie kann sowohl im Hauptprogramm als auch innerhalb der Funktion gelesen werden.
+    // 1. Global Variable: Wurde ganz oben außerhalb der Funktion deklariert. 
+    //    Sie kann sowohl im Hauptprogramm als auch innerhalb der Funktion gelesen werden.
 
-// 2. Local Variable: 'secret' wurde mit 'let' in der Funktion erstellt. 
-//    Sobald die Funktion bei der schließenden Klammer } endet, wird diese Variable gelöscht.
+    // 2. Local Variable: 'secret' wurde mit 'let' in der Funktion erstellt. 
+    //    Sobald die Funktion bei der schließenden Klammer } endet, wird diese Variable gelöscht.
 
-// 3. Shadowing (Gleicher Name): Wenn eine lokale Variable ('status') denselben Namen 
-//    hat wie eine globale, wird die globale innerhalb der Funktion "überschattet". 
-//    Die Funktion nutzt ihre eigene Version, ohne die globale Variable draußen zu ändern.
+    // 3. Shadowing (Gleicher Name): Wenn eine lokale Variable ('status') denselben Namen 
+    //    hat wie eine globale, wird die globale innerhalb der Funktion "überschattet". 
+    //    Die Funktion nutzt ihre eigene Version, ohne die globale Variable draußen zu ändern.
 
-// 4. Scope-Fehler: Der Versuch, auf 'secret' von außen zuzugreifen, führt zu einem 
-//    ReferenceError, weil der Browser die Variable außerhalb der Klammern nicht kennt.
+    // 4. Scope-Fehler: Der Versuch, auf 'secret' von außen zuzugreifen, führt zu einem 
+    //    ReferenceError, weil der Browser die Variable außerhalb der Klammern nicht kennt.
 
-
+//ich schreib noch was dazu
 
 });
