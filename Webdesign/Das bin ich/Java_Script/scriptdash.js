@@ -96,9 +96,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let usertheme = prompt("choose a theme?")
     let userlanguage = prompt("What do you speak?")
 
-    let userNamefinal = username || "Guest"
-    let userThemefinal = usertheme || "light"
-    let userLanguagefinal = userlanguage || "en"
+    let userNamefinal = username ?? "Guest"
+    let userThemefinal = usertheme ?? "light"
+    let userLanguagefinal = userlanguage ?? "en"
 
     console.log(userNamefinal, userThemefinal, userLanguagefinal);
 
