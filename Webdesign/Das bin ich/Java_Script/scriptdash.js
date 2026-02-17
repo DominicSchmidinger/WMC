@@ -1,4 +1,6 @@
 // damit das ganze übersichtlich bleibt 
+"use strict";
+
 document.addEventListener("DOMContentLoaded", () => {
 
     let username1 = localStorage.getItem("username");
@@ -91,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // exercise 7
     let username = prompt("whats your name?")
     let usertheme = prompt("choose a theme?")
-    let userlanguage = prompt("ehat do you speak?")
+    let userlanguage = prompt("What do you speak?")
 
     let userNamefinal = username || "Guest"
     let userThemefinal = usertheme || "light"
