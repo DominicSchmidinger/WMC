@@ -351,4 +351,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+    // Bmi rechner
+
+
+    const bmirechnen = document.getElementById("bmibut")
+
+    if (bmirechnen)
+        bmirechnen.addEventListener("click", function () {
+
+            let bmigr = document.getElementById("bmigr").value
+            let bmigew = document.getElementById("bmigew").value
+
+            let bmi = bmigew / (bmigr * bmigr)
+
+            alert("Dein bmi ist: " + bmi)
+        })
+
 });
