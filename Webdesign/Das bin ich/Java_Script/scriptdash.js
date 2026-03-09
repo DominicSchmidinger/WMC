@@ -298,6 +298,21 @@ console.log("Anzahl der Schleifendurchläufe: " + loopcount);
 
 //exercise 17
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//exercise 18
+
 // Global Variable
 let status = "Global: Ich bin überall sichtbar";
 
@@ -336,6 +351,9 @@ try {
 
 // 4. Scope-Fehler: Der Versuch, auf 'secret' von außen zuzugreifen, führt zu einem 
 //    ReferenceError, weil der Browser die Variable außerhalb der Klammern nicht kennt.
+
+
+//exercise 18
 
 
 
