@@ -308,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     console.log("Anzahl der Schleifendurchläufe: " + loopcount);
 
-//exercise 17
+    //exercise 17
 
     // Global Variable
     let status = "Global: Ich bin überall sichtbar";
@@ -346,8 +346,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //    hat wie eine globale, wird die globale innerhalb der Funktion "überschattet". 
     //    Die Funktion nutzt ihre eigene Version, ohne die globale Variable draußen zu ändern.
 
-// 4. Scope-Fehler: Der Versuch, auf 'secret' von außen zuzugreifen, führt zu einem 
-//    ReferenceError, weil der Browser die Variable außerhalb der Klammern nicht kennt.
+    // 4. Scope-Fehler: Der Versuch, auf 'secret' von außen zuzugreifen, führt zu einem 
+    //    ReferenceError, weil der Browser die Variable außerhalb der Klammern nicht kennt.
 
 
 
@@ -362,9 +362,18 @@ document.addEventListener("DOMContentLoaded", () => {
             let bmigr = document.getElementById("bmigr").value
             let bmigew = document.getElementById("bmigew").value
 
-            let bmi = bmigew / (bmigr * bmigr)
+            let bmi = Number((bmigew / (bmigr * bmigr)).toFixed(2));
 
             alert("Dein bmi ist: " + bmi)
+
+
+            result.innerHTML = "Ihr BMI: " + bmi
+
+
         })
+
+    //todo erstellen einer bmi anzeige 
+
+
 
 });
