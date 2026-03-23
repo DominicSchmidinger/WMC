@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Gesendet – Mail+</title>
+  <link rel="stylesheet" href="email.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="logo">Mail+</div>
+    <nav class="nav">
+      <button class="nav-item" onclick="location.href='inbox.html'">Posteingang</button>
+      <button class="nav-item active">Gesendet</button>
+      <button class="nav-item" onclick="location.href='drafts.html'">Entwürfe</button>
+      <button class="nav-item" onclick="location.href='spam.html'">Spam</button>
+      <button class="nav-item" onclick="location.href='trash.html'">Papierkorb</button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-avatar">M</div>
+      <div class="user-info">
+        <div class="user-name">Max Kramer</div>
+        <div class="user-class">4B</div>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1>Gesendet</h1>
+        <span class="topbar-subtitle">Gesendete E-Mails</span>
+      </div>
+      <div class="topbar-right">
+        <button class="btn secondary">Aktualisieren</button>
+        <button class="btn primary">Neue E-Mail</button>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="panel panel-list">
+        <div class="panel-header">
+          <input class="search" type="text" placeholder="Gesendete Mails durchsuchen …">
+        </div>
+        <ul class="mail-list">
+          <!-- Noch keine gesendeten Mails -->
+        </ul>
+      </section>
+
+      <section class="panel panel-viewer">
+        <div class="viewer-header">
+          <h2>Keine E-Mail ausgewählt</h2>
+          <div class="viewer-meta">
+            <span class="viewer-from"></span>
+            <span class="viewer-time"></span>
+          </div>
+        </div>
+        <div class="viewer-body"></div>
+      </section>
+    </div>
+  </main>
+</div>
+</body>
+</html>

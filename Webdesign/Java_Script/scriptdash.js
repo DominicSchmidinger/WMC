@@ -308,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     console.log("Anzahl der Schleifendurchläufe: " + loopcount);
 
-//exercise 17
+    //exercise 17
 
     // Global Variable
     let status = "Global: Ich bin überall sichtbar";
@@ -346,25 +346,49 @@ document.addEventListener("DOMContentLoaded", () => {
     //    hat wie eine globale, wird die globale innerhalb der Funktion "überschattet". 
     //    Die Funktion nutzt ihre eigene Version, ohne die globale Variable draußen zu ändern.
 
-// 4. Scope-Fehler: Der Versuch, auf 'secret' von außen zuzugreifen, führt zu einem 
-//    ReferenceError, weil der Browser die Variable außerhalb der Klammern nicht kennt.
+    // 4. Scope-Fehler: Der Versuch, auf 'secret' von außen zuzugreifen, führt zu einem 
+    //    ReferenceError, weil der Browser die Variable außerhalb der Klammern nicht kennt.
 
 
 
     // Bmi rechner
 
 
-    const bmirechnen = document.getElementById("bmibut")
+    // --- KORRIGIERTER BMI RECHNER ---
+    const bmirechnen = document.getElementById("bmibut");
+    const resultDisplay = document.getElementById("result"); // Variable für die Anzeige definieren
 
-    if (bmirechnen)
+    if (bmirechnen) {
         bmirechnen.addEventListener("click", function () {
+            // IDs korrigiert: bmigr und bmigew statt groesse/gewicht
+            let eingabeGr = document.getElementById("bmigr").value;
+            let eingabeGew = document.getElementById("bmigew").value;
 
-            let bmigr = document.getElementById("bmigr").value
-            let bmigew = document.getElementById("bmigew").value
+            // Komma durch Punkt ersetzen für deutsche Eingaben
+            eingabeGr = eingabeGr.replace(",", ".");
 
-            let bmi = bmigew / (bmigr * bmigr)
+            let bmigr = Number(eingabeGr);
+            let bmigew = Number(eingabeGew);
 
-            alert("Dein bmi ist: " + bmi)
+            if (bmigr === 0 || bmigew === 0) {
+                resultDisplay.innerHTML = "Bitte gib deine Größe und dein Gewicht an";
+            } else {
+                if (bmigr > 3) {
+                    bmigr = bmigr / 100;
+                }
+                let bmi = (bmigew / (bmigr * bmigr)).toFixed(2);
+                resultDisplay.innerHTML = "Ihr BMI: " + bmi;
+
+                if (bmi < 18.5) resultDisplay.innerHTML += " (Untergewicht)";
+                else if (bmi < 25) resultDisplay.innerHTML += " (Normalgewicht)";
+                else resultDisplay.innerHTML += " (Übergewicht)";
+            }
+
         })
+    }
+
+    //todo erstellen einer bmi anzeige 
+
+
 
 });
