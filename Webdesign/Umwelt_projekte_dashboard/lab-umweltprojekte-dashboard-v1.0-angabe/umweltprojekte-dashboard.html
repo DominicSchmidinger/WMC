@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <title>Umweltprojekte Tracker - Übung</title>
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="img/spengergasse-logo.png" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+      integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+      crossorigin="anonymous"
+    />
+    <script src="js/umwelt-dashboard.js"></script>
+  </head>
+
+  <body>
+    <div class="container mt-4">
+      <div class="p-4 rounded text-center text-white bg-success">
+        <h1><i class="fas fa-leaf"></i> Umweltprojekte Tracker</h1>
+        <h4>Übung: DOM Manipulation & Events</h4>
+      </div>
+    </div>
+
+    <div class="container mt-4">
+      <!-- Aufgabe 1: Neues Projekt hinzufügen -->
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          <h5>Aufgabe 1: Neues Umweltprojekt hinzufügen</h5>
+        </div>
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label for="projekt-name" class="form-label">Projektname:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="projekt-name"
+                placeholder="z.B. Baumpflanzaktion"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="projekt-typ" class="form-label">Typ:</label>
+              <select class="form-select" id="projekt-typ">
+                <option value="">-- Wählen --</option>
+                <option value="Aufforstung">Aufforstung</option>
+                <option value="Recycling">Recycling</option>
+                <option value="Erneuerbare Energie">Erneuerbare Energie</option>
+                <option value="Gewässerschutz">Gewässerschutz</option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <label for="projekt-co2" class="form-label"
+                >CO₂-Einsparung (kg/Jahr):</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="projekt-co2"
+                placeholder="z.B. 500"
+              />
+            </div>
+          </div>
+          <button class="btn btn-success" id="btn-add-projekt">
+            <i class="fas fa-plus"></i> Projekt hinzufügen
+          </button>
+        </div>
+      </div>
+
+      <!-- Aufgabe 2: Projekte filtern -->
+      <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+          <h5>Aufgabe 2: Projekte filtern</h5>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="filter-typ" class="form-label"
+                >Nach Typ filtern:</label
+              >
+              <select class="form-select" id="filter-typ">
+                <option value="alle">Alle anzeigen</option>
+                <option value="Aufforstung">Aufforstung</option>
+                <option value="Recycling">Recycling</option>
+                <option value="Erneuerbare Energie">Erneuerbare Energie</option>
+                <option value="Gewässerschutz">Gewässerschutz</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label for="search-name" class="form-label"
+                >Nach Name suchen:</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="search-name"
+                placeholder="Projektname eingeben..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aufgabe 3: Projektliste anzeigen -->
+      <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+          <h5>Aufgabe 3: Projektliste</h5>
+        </div>
+        <div class="card-body">
+          <div class="alert alert-info mb-3">
+            <strong
+              ><i class="fas fa-info-circle"></i> Klassen-Methoden:</strong
+            >
+            Jedes Projekt nutzt eigene Methoden für Berechnungen:
+            <ul class="mb-0 mt-2">
+              <li>
+                <strong>Baum-Äquivalent:</strong> <code>co2InBaeume()</code> - 1
+                Baum = 20kg CO₂/Jahr
+              </li>
+              <li>
+                <strong>Umweltpunkte:</strong>
+                <code>berechneUmweltPunkte()</code> - Gewichtet nach Typ
+              </li>
+              <li>
+                <strong>Hoher Impact:</strong> <code>istHochImpakt()</code> -
+                Badge bei ≥ 3000 kg CO₂
+              </li>
+              <li>
+                <strong>Farbige Ränder:</strong>
+                <code>getImpaktKlasse()</code> - Grün (≥4000), Gelb (≥2000)
+              </li>
+            </ul>
+          </div>
+          <div id="projekt-liste" class="row"></div>
+        </div>
+      </div>
+
+      <!-- Aufgabe 4: Statistiken -->
+      <div class="card mb-4">
+        <div class="card-header bg-warning">
+          <h5>Aufgabe 4: Statistiken</h5>
+        </div>
+        <div class="card-body">
+          <div class="row text-center">
+            <div class="col-md-3">
+              <h3 id="stat-anzahl">0</h3>
+              <p class="text-muted">Projekte gesamt</p>
+            </div>
+            <div class="col-md-3">
+              <h3 id="stat-co2">0</h3>
+              <p class="text-muted">kg CO₂ eingespart/Jahr</p>
+            </div>
+            <div class="col-md-3">
+              <h3 id="stat-typ">-</h3>
+              <p class="text-muted">Häufigster Typ</p>
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-primary" id="btn-export-json">
+                <i class="fas fa-download"></i> JSON Export
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JSON Output -->
+      <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+          <h5>JSON Ausgabe</h5>
+        </div>
+        <div class="card-body">
+          <pre id="json-output" class="bg-light p-3"></pre>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
