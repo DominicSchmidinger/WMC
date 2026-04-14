@@ -213,6 +213,7 @@ window.onload = function () {
         document.getElementById("projekt-typ").value = "";
         document.getElementById("projekt-co2").value = "";
 
+        localStorage.setItem('')
         aktualisiereAnzeige();
     });
 
