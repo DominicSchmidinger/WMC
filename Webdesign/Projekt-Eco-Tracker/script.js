@@ -60,4 +60,68 @@ function displayQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
 
     //Titel und text
+    questionTitel.innerText = `Frage ${currentQuestionIndex + 1} von ${questions.length}`;
+    questionText.innerText = currentQuestion.question;
+
+    //Antworten leeren und neu aufbauen
+
+    optionsContainer.innerHTML = "";
+    currentQuestion.answers.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.innerText = answer.text;
+        button.className = 'btn-nav';
+        button.style.display = "block";
+        button.style.width = "100%";
+        button.style.margin = "5px 0";
+
+       button.onclick = () => {
+            userAnswers[currentQuestionIndex] = answer.points; // Punktzahl merken
+            console.log("Gewählte Punkte:", answer.points);
+            // Optisches Feedback (alle anderen Buttons zurücksetzen, diesen markieren)
+            Array.from(optionsContainer.children).forEach(btn => btn.style.background = "");
+            button.style.background = "#40916c";
+        };
+        optionsContainer.appendChild(button);
+    });
+
+    //Buttons aktivieren/deaktivieren
+    prevBtn.disabled = currentQuestionIndex === 0;
+    if (currentQuestionIndex === questions.length - 1) {
+        nextBtn.innerText = "Zum Ergebnis"
+        } else {
+            nextBtn.innerText = "Weiter";
+        
+    }
 }
+
+//5. Event Listener für die Navigation
+if (nextBtn) {
+    nextBtn.onclick = () => {
+        if (currentQuestionIndex < questions.length - 1) {
+        if (currentQuestionIndex < questions.length - 1) {
+            currentQuestionIndex++;
+            displayQuestion();
+        } else {
+            //Quiz fertig
+            finishQuiz();
+        }
+    };
+}
+
+if (prevBtn) {
+    prevBtn.onclick = () => {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            displayQuestion();
+        }
+    };
+}
+
+//Quiz abschließen und Local storage
+function finishQuiz() {
+    const finalScore = userAnswers.reduce((a,b) => (a||0) + (b||0), 0);
+    localStorage.setItem("ecoQuizScore", finalScore);
+    window.location.href = "result.html";   
+    
+}
+displayQuestion();
