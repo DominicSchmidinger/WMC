@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eco Tracker - Ergebnisse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">Eco Tracker 🌿</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li><a href="ergebnisse.html">Ergebnisse</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="white-card" style="text-align: center;">
+            <h2 style="margin: 0; color: var(--primary-green);">Dein Öko-Score</h2>
+            <div id="final-score" style="font-size: 3rem; font-weight: bold;">0</div>
+            <p id="score-text">Berechne...</p>
+        </div>
+
+        <div class="white-card">
+            <h3>Umweltcheck für deine Stadt</h3>
+            <div class="city-input-group">
+                <input type="text" id="city-input" placeholder="Deine Stadt eingeben (z.B. Wien)">
+                <button id="search-city-btn" class="btn-nav">Daten laden</button>
+            </div>
+
+            <div id="weather-results" class="api-grid">
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

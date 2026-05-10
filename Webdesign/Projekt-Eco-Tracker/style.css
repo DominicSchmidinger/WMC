@@ -1,0 +1,138 @@
+:root {
+    --primary-green: #2d6a4f;
+    --light-green: #d8f3dc;
+    --matte-green: #e9f5db;
+    /* Mattes Hellgrün für den Hintergrund */
+    --accent-color: #40916c;
+    --text-color: #1b4332;
+    --white: #ffffff;
+    --dark-green: #1b4332;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: var(--matte-green);
+    color: var(--text-color);
+}
+
+/* NAVIGATION (fixiert) */
+.navbar {
+    background-color: var(--primary-green);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* FIXIERTER QUIZ-BUTTON (für Index) */
+.fixed-start-btn {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: #ff9f1c;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+/* LOGIN DESIGN - Zentriert mit dunkler Card */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Volle Höhe für vertikale Zentrierung */
+}
+
+.login-card {
+    background: var(--dark-green);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.login-card h2 {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: var(--light-green);
+}
+
+.login-card input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    box-sizing: border-box;
+    /* Damit Padding die Breite nicht sprengt */
+}
+
+.login-card input::placeholder {
+    color: #ccc;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 12px;
+    margin-top: 1rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-login:hover {
+    background-color: #52b788;
+}
+
+/* CONTENT DESIGN */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.white-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
