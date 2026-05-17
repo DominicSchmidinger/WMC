@@ -6,6 +6,10 @@ function begruessung() {
 }
 begruessung();
 
+
+const alter = prompt("Wie alt bist du?");
+console.log("Du bist " + alter + " Jahre alt.");
+
 alert("Hallo, ich heiße " + name + " und ich bin " + alter + " Jahre alt.");
 
 const alter2 = prompt("Wie alt bist du?");
