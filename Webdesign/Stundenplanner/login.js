@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('form');
-    
-    if(!loginForm) {
+
+    if (!loginForm) {
         console.error("Formular wurde nicht gefunden!");
         return;
     }
@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Validierung
         if (password.length < 5) {
             alert("Passwort zu kurz! (Min. 5 Zeichen)");
-        } 
+        }
         else if (!specialCharRegex.test(password)) {
             alert("Sonderzeichen fehlt! (z.B. ! oder ?)");
-        } 
-       else {
+        }
+        else {
             // 1. Erfolg melden
             alert("Anmeldung erfolgreich!");
 
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('currentUser', username); // Optional: Namen merken
 
             // 3. Weiterleitung
-            window.location.href = "index.html"; 
+            window.location.href = "index.html";
         }
     });
 });
