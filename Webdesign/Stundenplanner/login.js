@@ -17,27 +17,32 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const username = userField.value;
+        const username = userField.value.trim();
         const password = passField.value;
-        const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+        const specialCharRegex = /[!@#$%^&*(),.?\":{}|<>]/;
 
-        // Validierung
-        if (password.length < 5) {
-            alert("Passwort zu kurz! (Min. 5 Zeichen)");
+        // 1. ÜBERPRÜFUNG: Passt der Name? (Darf nicht leer sein)
+        if (username === "") {
+            alert("Anmeldung fehlgeschlagen: Bitte gib einen Benutzernamen ein!");
+            return;
         }
-        else if (!specialCharRegex.test(password)) {
-            alert("Sonderzeichen fehlt! (z.B. ! oder ?)");
-        }
-        else {
-            // 1. Erfolg melden
-            alert("Anmeldung erfolgreich!");
 
-            // 2. Den Status speichern (Schlüssel: 'isLoggedIn', Wert: 'true')
-            localStorage.setItem('isLoggedIn', 'true');
-            localStorage.setItem('currentUser', username); // Optional: Namen merken
-
-            // 3. Weiterleitung
-            window.location.href = "index.html";
+        // 2. ÜBERPRÜFUNG: Passt das Passwort? 
+        // Schaut nach der Länge (mindestens 5 Zeichen) und ob ein Sonderzeichen drin ist
+        if (password.length < 5 || !specialCharRegex.test(password)) {
+            alert("Anmeldung fehlgeschlagen: Das Passwort oder der Name passt nicht! (Hinweis: Passwort braucht mindestens 5 Zeichen und ein Sonderzeichen wie ! oder ?)");
+            return;
         }
+
+        // Wenn Name und Passwort passen, wird dieser Teil ausgeführt:
+        // 1. Erfolg melden
+        alert("Anmeldung erfolgreich!");
+
+        // 2. Den Status im Browser speichern
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('currentUser', username);
+
+        // 3. WEITERLEITUNG zur mainside.html
+        window.location.href = "mainside.html";
     });
 });
