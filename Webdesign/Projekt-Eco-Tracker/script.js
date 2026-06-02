@@ -2,42 +2,44 @@
 
 const questions = [
     {
-        id: 1
+        id: 1,
         question: "Wie oft nutzt du öffentliche Verkehrsmittel?",
-        answers:[
-            {text: "Täglich", points: 10},
-            {text: "Ab und zu", points: 5},
-            {text: "Fast nie", points: 0}
+        answers: [
+            { text: "Täglich", points: 10 },
+            { text: "Ab und zu", points: 5 },
+            { text: "Fast nie", points: 0 }
         ]
     },
     {
-        id: 2
+        id: 2,
         question: "Wie ernährst du dich hauptsächlich?",
-        answers:[
-            {text: "Vegan", points: 10},
-            {text: "Wenig Fleisch", points: 5},
-            {text: "Viel Fleisch", points: 0}
+        answers: [
+            { text: "Vegan", points: 10 },
+            { text: "Wenig Fleisch", points: 5 },
+            { text: "Viel Fleisch", points: 0 }
         ]
     },
     {
-        id: 3
+        id: 3,
         question: "Trennst du deinen Müll konsequent?",
-        answers:[
-            {text: "Ja, immer", points: 10},
-            {text: "Ab und zu", points: 5},
-            {text: "Fast nie", points: 0}
+        answers: [
+            { text: "Ja, immer", points: 10 },
+            { text: "Ab und zu", points: 5 },
+            { text: "Fast nie", points: 0 }
         ]
     },
     {
-        id: 4
+        id: 4,
         question: "Wie oft kaufst du neue Kleidung?",
-        answers:[
-            {text: "Sehr oft", points: 0},
-            {text: "Manchmal", points: 5},
-            {text: "Selten", points: 10}
+        answers: [
+            { text: "Sehr oft", points: 0 },
+            { text: "Manchmal", points: 5 },
+            { text: "Selten", points: 10 }
         ]
     }
 ];
+
+
 
 //2. Status Variablen
 let currentQuestionIndex = 0;
@@ -46,7 +48,7 @@ let userAnswers = []; //Punkte pro frage werden hier gespeichert
 
 //3. Elemente aus dem HTML holen (DOM - Auswahl)
 
-const questionTitel = document.getElementById("question-titel");
+const questionTitel = document.getElementById("question-title");
 const questionText = document.getElementById("question-text");
 const optionsContainer = document.getElementById("options-container");
 const prevBtn = document.getElementById("prev-btn");
@@ -55,13 +57,13 @@ const nextBtn = document.getElementById("next-btn");
 //4. Funktion zum Anzeigen der aktuellen Frage
 function displayQuestion() {
     //Falls wir aud der Quiz-Seite sind
-    if(!questionText) return;
+    if (!questionText) return;
 
     const currentQuestion = questions[currentQuestionIndex];
 
     //Titel und text
     questionTitel.innerText = `Frage ${currentQuestionIndex + 1} von ${questions.length}`;
-    questionText.innerText = currentQuestion.question;
+    questionText.innerHTML = currentQuestion.question;
 
     //Antworten leeren und neu aufbauen
 
@@ -74,7 +76,7 @@ function displayQuestion() {
         button.style.width = "100%";
         button.style.margin = "5px 0";
 
-       button.onclick = () => {
+        button.onclick = () => {
             userAnswers[currentQuestionIndex] = answer.points; // Punktzahl merken
             console.log("Gewählte Punkte:", answer.points);
             // Optisches Feedback (alle anderen Buttons zurücksetzen, diesen markieren)
@@ -88,9 +90,9 @@ function displayQuestion() {
     prevBtn.disabled = currentQuestionIndex === 0;
     if (currentQuestionIndex === questions.length - 1) {
         nextBtn.innerText = "Zum Ergebnis"
-        } else {
-            nextBtn.innerText = "Weiter";
-        
+    } else {
+        nextBtn.innerText = "Weiter";
+
     }
 }
 
@@ -98,30 +100,31 @@ function displayQuestion() {
 if (nextBtn) {
     nextBtn.onclick = () => {
         if (currentQuestionIndex < questions.length - 1) {
-        if (currentQuestionIndex < questions.length - 1) {
-            currentQuestionIndex++;
-            displayQuestion();
-        } else {
-            //Quiz fertig
-            finishQuiz();
-        }
-    };
-}
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+            } else {
+                //Quiz fertig
+                finishQuiz();
+            }
+        };
+    }
 
-if (prevBtn) {
-    prevBtn.onclick = () => {
-        if (currentQuestionIndex > 0) {
-            currentQuestionIndex--;
-            displayQuestion();
-        }
-    };
-}
+    if (prevBtn) {
+        prevBtn.onclick = () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        };
+    }
 
-//Quiz abschließen und Local storage
-function finishQuiz() {
-    const finalScore = userAnswers.reduce((a,b) => (a||0) + (b||0), 0);
-    localStorage.setItem("ecoQuizScore", finalScore);
-    window.location.href = "result.html";   
-    
+    //Quiz abschließen und Local storage
+    function finishQuiz() {
+        const finalScore = userAnswers.reduce((a, b) => (a || 0) + (b || 0), 0);
+        localStorage.setItem("ecoQuizScore", finalScore);
+        window.location.href = "result.html";
+
+    }
+    displayQuestion();
 }
-displayQuestion();
