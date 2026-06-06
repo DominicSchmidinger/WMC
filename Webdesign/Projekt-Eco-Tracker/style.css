@@ -136,3 +136,18 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
+
+.radiation-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.radiation-card {
+    background: var(--light-green);
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    min-width: 80px;
+}
