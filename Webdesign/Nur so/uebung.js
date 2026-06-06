@@ -42,3 +42,23 @@ const input = document.getElementById("input");
 addEventListener("input", () => {
     console.log("Eingabe: ", input.value);
 })
+
+let auto = new Object();
+let auto = {
+    marke: "BMW",
+    ps: 300
+};
+
+info(auto.marke + " hat " + auto.ps + " PS.");
+
+const jsoncontent = {"name": "Dominic", "alter": 22};
+const json = JSON.stringify(jsoncontent);
+
+console.log(jsoncontent.name);
+
+const name = "Dominic";
+const gespeichert = localStorage.setItem("name", name);
+
+console.log(localStorage.getItem("name")); // Dominic
+
+
