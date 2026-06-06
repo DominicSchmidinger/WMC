@@ -53,6 +53,8 @@ const questionText = document.getElementById("question-text");
 const optionsContainer = document.getElementById("options-container");
 const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
+const finalScoreDisplay = document.getElementById("final-score");
+const scoreTextDisplay = document.getElementById("score-text");
 
 //4. Funktion zum Anzeigen der aktuellen Frage
 function displayQuestion() {
@@ -100,31 +102,88 @@ function displayQuestion() {
 if (nextBtn) {
     nextBtn.onclick = () => {
         if (currentQuestionIndex < questions.length - 1) {
-            if (currentQuestionIndex < questions.length - 1) {
-                currentQuestionIndex++;
-                displayQuestion();
-            } else {
-                //Quiz fertig
-                finishQuiz();
-            }
-        };
-    }
+            currentQuestionIndex++;
+            displayQuestion();
+        } else {
+            //Quiz fertig
+            finishQuiz();
+        }
+    };
+}
 
-    if (prevBtn) {
-        prevBtn.onclick = () => {
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                displayQuestion();
-            }
-        };
-    }
+if (prevBtn) {
+    prevBtn.onclick = () => {
+        if (currentQuestionIndex > 0) {
+            currentQuestionIndex--;
+            displayQuestion();
+        }
+    };
+}
 
-    //Quiz abschließen und Local storage
-    function finishQuiz() {
-        const finalScore = userAnswers.reduce((a, b) => (a || 0) + (b || 0), 0);
-        localStorage.setItem("ecoQuizScore", finalScore);
-        window.location.href = "result.html";
+//Quiz abschließen und Local storage
+function finishQuiz() {
+    const finalScore = userAnswers.reduce((a, b) => (a || 0) + (b || 0), 0);
+    localStorage.setItem("ecoQuizScore", finalScore);
+    window.location.href = "ergebnisse.html";
 
+}
+
+function displayResult() {
+    if (!finalScoreDisplay) return;
+
+    const savedScore = localStorage.getItem("ecoQuizScore") || 0;
+
+    finalScoreDisplay.innerText = savedScore;
+
+    let rating = "";
+
+    if (savedScore >= 30) {
+        rating = "Öko-Gott! 🌿 Du lebst extrem nachhaltig.";
+    } else if (savedScore >= 15) {
+        rating = "Ganz gut! 🤓 Da geht aber noch was für die Umwelt.";
+    } else {
+        rating = "Klimakiller! 🚗 Deine Bilanz ist ausbaufähig.";
     }
-    displayQuestion();
+    finalScoreDisplay.innerText = rating;
+
+    scoreTextDisplay.innerText = rating;
+}
+displayQuestion();
+displayResult();
+
+const searchCityBtn = document.getElementById("search-city-btn");
+const cityInput = document.getElementById("city-input");
+
+if (searchCityBtn) {
+    searchCityBtn.onclick = () => {
+        const city = cityInput.value.trim();
+
+        if (cityName === "") {
+            alert("Bitte gib einen Stadtnamen ein.");
+            return;
+        }
+
+        const geocodingUrl = `https://nominatim.openstreetmap.org/search?q=${cityName}&format=json&limit=1`;
+
+        fetch(geocodingUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.length === 0) {
+                    alert("Stadt nicht gefunden. Bitte versuche es erneut.");
+                    return;
+                }
+
+                const cityData = data[0];
+                const lat = cityData.lat;
+                const lon = cityData.lon;
+
+                console.log(`koordinaten für ${cityName}:Lat ${lat}, Lon ${lon}`);
+
+            })
+
+            .catch(error => {
+                console.error("Fehler bei der Geocoding-Anfrage:", error);
+                alert("Es gab ein Problem bei der Suche. Bitte versuche es später erneut.");
+            });
+    };
 }
