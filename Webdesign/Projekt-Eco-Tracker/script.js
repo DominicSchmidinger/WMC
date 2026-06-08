@@ -1,44 +1,14 @@
 // ============================================================
 // 1. QUIZ-DATEN (Fragen und Antworten)
 // ============================================================
-const questions = [
-    {
-        id: 1,
-        question: "Wie oft nutzt du öffentliche Verkehrsmittel?",
-        answers: [
-            { text: "Täglich", points: 10 },
-            { text: "Ab und zu", points: 5 },
-            { text: "Fast nie", points: 0 }
-        ]
-    },
-    {
-        id: 2,
-        question: "Wie ernährst du dich hauptsächlich?",
-        answers: [
-            { text: "Vegan", points: 10 },
-            { text: "Wenig Fleisch", points: 5 },
-            { text: "Viel Fleisch", points: 0 }
-        ]
-    },
-    {
-        id: 3,
-        question: "Trennst du deinen Müll konsequent?",
-        answers: [
-            { text: "Ja, immer", points: 10 },
-            { text: "Ab und zu", points: 5 },
-            { text: "Fast nie", points: 0 }
-        ]
-    },
-    {
-        id: 4,
-        question: "Wie oft kaufst du neue Kleidung?",
-        answers: [
-            { text: "Sehr oft", points: 0 },
-            { text: "Manchmal", points: 5 },
-            { text: "Selten", points: 10 }
-        ]
-    }
-];
+let questions = []; // leer, wird per fetch befüllt
+
+fetch("fragen.json")
+    .then(response => response.json())
+    .then(data => {
+        questions = data;
+        displayQuestion(); // erst NACH dem Laden anzeigen!
+    });
 
 // ============================================================
 // 2. STATUS-VARIABLEN
@@ -302,6 +272,5 @@ if (filterBtn) {
 // ============================================================
 // INITIALISIERUNG
 // Diese Funktionen werden sofort beim Laden der Seite aufgerufen
-// ============================================================
-displayQuestion(); // Quiz starten (macht nichts wenn nicht auf quiz.html)
+// ============================================================ // Quiz starten (macht nichts wenn nicht auf quiz.html)
 displayResult();   // Ergebnis anzeigen (macht nichts wenn nicht auf ergebnisse.html)
