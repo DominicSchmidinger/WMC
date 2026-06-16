@@ -21,7 +21,7 @@ let userAnswers = [];          // Hier werden die Punkte pro Frage gespeichert
 // "global" = überall im Script zugänglich, nicht nur im fetch-block
 let radiationData = []; // Speichert die Strahlungswerte (z.B. [0, 0, 30.8, 141, ...])
 let timesData = [];     // Speichert die Uhrzeiten (z.B. ["2026-06-06T00:00", ...])
-                        // timesData[0] gehört immer zu radiationData[0], usw.
+// timesData[0] gehört immer zu radiationData[0], usw.
 
 // ============================================================
 // 3. DOM-ELEMENTE HOLEN
