@@ -1,182 +1,458 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap');
+
 :root {
-    --primary-green: #2d6a4f;
-    --light-green: #d8f3dc;
-    --matte-green: #e9f5db;
-    /* Mattes Hellgrün für den Hintergrund */
-    --accent-color: #40916c;
-    --text-color: #1b4332;
-    --white: #ffffff;
-    --dark-green: #1b4332;
+    --bg:        #0f1923;
+    --surface:   #162030;
+    --card:      #1e2d3d;
+    --card-alt:  #243447;
+    --accent:    #00e5a0;
+    --accent-dim:#00b37d;
+    --text:      #e8edf2;
+    --muted:     #7a90a4;
+    --border:    #2a3d52;
+    --warn:      #f4a261;
+    --white:     #ffffff;
 }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    background-color: var(--matte-green);
-    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
 }
 
-/* NAVIGATION (fixiert) */
+/* ── NAVBAR ─────────────────────────────────────── */
 .navbar {
-    background-color: var(--primary-green);
-    color: white;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
-    padding: 1rem 5%;
+    align-items: center;
+    padding: 0.9rem 5%;
     position: sticky;
     top: 0;
     z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+
+.logo {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--accent);
+    letter-spacing: -0.02em;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 8px;
 }
 
 .nav-links a {
-    color: white;
+    color: var(--muted);
     text-decoration: none;
-    font-weight: bold;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 6px;
+    transition: color 0.2s, background 0.2s;
 }
 
-/* FIXIERTER QUIZ-BUTTON (für Index) */
+.nav-links a:hover {
+    color: var(--text);
+    background: var(--card);
+}
+
+/* ── FIXED QUIZ BUTTON ───────────────────────────── */
 .fixed-start-btn {
     position: fixed;
     top: 80px;
     right: 20px;
-    background-color: #ff9f1c;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 50px;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 13px 22px;
+    border-radius: 10px;
     text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 0 20px rgba(0, 229, 160, 0.3);
     z-index: 999;
+    transition: box-shadow 0.2s, transform 0.15s;
 }
 
-/* LOGIN DESIGN - Zentriert mit dunkler Card */
+.fixed-start-btn:hover {
+    box-shadow: 0 0 30px rgba(0, 229, 160, 0.5);
+    transform: translateY(-1px);
+}
+
+/* ── LOGIN ───────────────────────────────────────── */
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    /* Volle Höhe für vertikale Zentrierung */
+    min-height: 100vh;
+    padding: 20px;
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(0, 229, 160, 0.06) 0%, transparent 60%),
+        var(--bg);
 }
 
 .login-card {
-    background: var(--dark-green);
-    color: white;
+    background: var(--surface);
+    border: 1px solid var(--border);
     padding: 2.5rem;
-    border-radius: 20px;
+    border-radius: 16px;
     width: 100%;
-    max-width: 350px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    max-width: 380px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
 .login-card h2 {
-    margin-bottom: 1.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+}
+
+.login-subtitle {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-bottom: 2rem;
 }
 
 .form-group {
-    text-align: left;
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
-    font-size: 0.9rem;
-    color: var(--light-green);
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
-.login-card input {
+.login-card input[type="text"],
+.login-card input[type="password"] {
     width: 100%;
-    padding: 12px;
+    padding: 11px 14px;
     border-radius: 8px;
-    border: none;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    box-sizing: border-box;
-    /* Damit Padding die Breite nicht sprengt */
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
 }
 
-.login-card input::placeholder {
-    color: #ccc;
+.login-card input[type="text"]:focus,
+.login-card input[type="password"]:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.login-card input::placeholder { color: var(--muted); }
+
+/* Checkbox-Zeile */
+.remember-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 1.2rem 0;
+    padding: 12px 14px;
+    background: var(--card);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+}
+
+.remember-row input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.remember-row span {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
+.remember-row span strong {
+    color: var(--text);
 }
 
 .btn-login {
     width: 100%;
     padding: 12px;
-    margin-top: 1rem;
-    background-color: var(--accent-color);
-    color: white;
+    margin-top: 0.5rem;
+    background: var(--accent);
+    color: var(--bg);
     border: none;
     border-radius: 8px;
-    font-weight: bold;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.2s, box-shadow 0.2s;
 }
 
 .btn-login:hover {
-    background-color: #52b788;
+    background: #1ffdb5;
+    box-shadow: 0 0 20px rgba(0, 229, 160, 0.35);
 }
 
-/* CONTENT DESIGN */
+.login-error {
+    display: none;
+    margin-top: 0.8rem;
+    padding: 10px 14px;
+    background: rgba(244, 162, 97, 0.12);
+    border: 1px solid var(--warn);
+    border-radius: 8px;
+    color: var(--warn);
+    font-size: 0.88rem;
+    text-align: center;
+}
+
+/* ── CARDS & CONTENT ─────────────────────────────── */
 .container {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 20px;
+    max-width: 920px;
+    margin: 36px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .white-card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    border-radius: 14px;
 }
 
-.radiation-grid {
+.white-card h1,
+.white-card h2,
+.white-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.white-card p, .white-card li { color: var(--muted); line-height: 1.7; }
+.white-card ul { padding-left: 1.2rem; }
+.white-card li { margin-bottom: 6px; }
+.white-card strong { color: var(--text); }
+
+/* ── NAV BUTTONS ─────────────────────────────────── */
+.btn-nav {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.btn-nav:hover:not(:disabled) {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+}
+
+.btn-nav:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* ── QUIZ ────────────────────────────────────────── */
+.options-grid {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 10px;
+    margin: 20px 0;
+}
+
+.options-grid .btn-nav {
+    text-align: left;
+    padding: 14px 18px;
+}
+
+.quiz-nav {
+    display: flex;
+    justify-content: space-between;
     margin-top: 10px;
 }
 
+/* ── CITY INPUT ──────────────────────────────────── */
+.city-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.city-input-group input {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+}
+
+.city-input-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.city-input-group input::placeholder { color: var(--muted); }
+
+/* ── API GRID ────────────────────────────────────── */
+.api-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+}
+
+.api-grid .white-card {
+    padding: 20px 22px;
+}
+
+/* ── RADIATION ───────────────────────────────────── */
+.radiation-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
 .radiation-card {
-    background: var(--light-green);
-    border-radius: 10px;
-    padding: 10px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
     text-align: center;
-    min-width: 80px;
+    min-width: 76px;
+}
+
+.radiation-card .hour {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+}
+
+.radiation-card .value {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--accent);
+}
+
+/* ── SCORE DISPLAY ───────────────────────────────── */
+#final-score {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin: 14px 0 8px;
+}
+
+#score-text { color: var(--muted); }
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 600px) {
+    .navbar { flex-direction: column; gap: 10px; padding: 1rem; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 6px; }
+    .container { padding: 10px; margin: 16px auto; }
+    .white-card { padding: 20px 18px; }
+    .radiation-grid { justify-content: center; }
+    .fixed-start-btn { top: auto; bottom: 20px; right: 20px; }
+    .city-input-group { flex-direction: column; }
+}
+
+/* ── INDEX INFO-SECTION ──────────────────────────── */
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+}
+
+.stat-highlight {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 20px 24px;
+}
+
+.stat-highlight .big-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.stat-highlight p {
+    color: var(--muted);
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.tech-tag {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-family: monospace;
+}
+
+.section-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
 @media (max-width: 600px) {
-    .navbar {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .container {
-        padding: 10px;
-        margin: 10px auto;
-    }
-
-    .radiation-grid {
-        justify-content: center;
-    }
-
-    .fixed-start-btn {
-        top: auto;
-        bottom: 20px;
-        right: 20px;
-    }
+    .stat-row { grid-template-columns: 1fr; }
+    .stat-highlight .big-number { font-size: 2rem; }
 }

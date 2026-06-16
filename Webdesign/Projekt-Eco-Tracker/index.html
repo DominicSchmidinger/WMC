@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <title>Eco Tracker - Startseite</title>
     <link rel="stylesheet" href="style.css">
-</head>
 
+</head>
 <body>
     <nav class="navbar">
         <div class="logo">Eco Tracker 🌿</div>
@@ -22,22 +21,52 @@
     <main class="container">
         <div class="white-card">
             <h1>Wie nachhaltig ist dein Leben?</h1>
-            <p>Willkommen beim Eco Tracker! In unserer heutigen Zeit ist es wichtiger denn je, den eigenen ökologischen
-                Fußabdruck zu kennen.</p>
-            <h3>Was dich erwartet:</h3>
-            <ul>
+            <p style="margin-top: 12px;">Willkommen beim Eco Tracker! In unserer heutigen Zeit ist es wichtiger denn je, den eigenen ökologischen Fußabdruck zu kennen.</p>
+
+            <h3 style="margin-top: 24px;">Was dich erwartet:</h3>
+            <ul style="margin-top: 10px;">
                 <li><strong>Das Quiz:</strong> Beantworte Fragen zu deinem Alltag (Ernährung, Wohnen, Mobilität).</li>
                 <li><strong>Die Analyse:</strong> Erhalte eine sofortige Bewertung deines Verhaltens.</li>
-                <li><strong>Live-Daten:</strong> Vergleiche deine Ergebnisse mit aktuellen Umweltdaten aus deiner Stadt.
-                </li>
+                <li><strong>Live-Daten:</strong> Vergleiche deine Ergebnisse mit aktuellen Umweltdaten aus deiner Stadt.</li>
             </ul>
-            <p style="margin-top: 40px; font-style: italic;">Scrolle nach unten, um mehr über das Projekt zu erfahren...
-            </p>
-            <div style="height: 1000px; background: #f9f9f9; padding: 20px; border-radius: 10px;">
-                <p>(Hier stehen weitere Projekt-Details... der Button rechts oben bleibt sichtbar!)</p>
+
+            <p style="margin-top: 28px; font-style: italic; color: var(--muted); font-size: 0.9rem;">↓ Scrolle nach unten für mehr Infos zum Projekt</p>
+
+            <!-- INFO-BEREICH -->
+            <div class="info-section">
+
+                <div>
+                    <p class="section-label">Warum das wichtig ist</p>
+                    <div class="stat-row">
+                        <div class="stat-highlight">
+                            <div class="big-number">8t</div>
+                            <p>CO₂ pro Jahr – so viel verursacht der durchschnittliche Österreicher.</p>
+                        </div>
+                        <div class="stat-highlight">
+                            <div class="big-number">&lt;2t</div>
+                            <p>CO₂ pro Jahr – das wäre das Ziel für ein stabiles Klima weltweit.</p>
+                        </div>
+                    </div>
+                    <p style="margin-top: 16px; color: var(--muted);">Der Eco Tracker hilft dir, deinen eigenen Fußabdruck besser einzuschätzen – mit einem kurzen Quiz und aktuellen Umweltdaten direkt aus deiner Stadt. Kein Greenpeace-Account nötig, keine App. Einfach mitmachen.</p>
+                </div>
+
+                <div>
+                    <p class="section-label">Über das Projekt</p>
+                    <p style="color: var(--muted);">Dieses Projekt entstand im Rahmen des WMC-Unterrichts im 2. Semester. Ziel war es, eine mehrseitige Webanwendung mit echten APIs, Local Storage und einer externen JSON-Datei umzusetzen. Die Idee: Nachhaltigkeit messbar machen – nicht nur als abstrakte Zahl, sondern mit echten Umweltdaten aus deiner Stadt.</p>
+                    <div class="tech-list">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Nominatim API</span>
+                        <span class="tech-tag">Open-Meteo API</span>
+                        <span class="tech-tag">Air Quality API</span>
+                        <span class="tech-tag">Local Storage</span>
+                        <span class="tech-tag">fragen.json</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
 </body>
-
 </html>
